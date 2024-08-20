@@ -15,7 +15,11 @@ if not os.path.exists(nltk_data_dir):
     os.makedirs(nltk_data_dir)
 
 # Download the punkt tokenizer to the nltk_data directory
-nltk.download('punkt', download_dir=nltk_data_dir)
+try:
+    nltk.download('punkt', download_dir=nltk_data_dir)
+except Exception as e:
+    st.error(f"Error downloading NLTK data: {e}")
+
 
 # Set the NLTK data path to the local directory
 nltk.data.path.append(nltk_data_dir)
