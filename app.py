@@ -119,21 +119,21 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from pinecone_text.sparse import BM25Encoder
 import os
 from dotenv import load_dotenv
+from nltk_data_downloader import NLTKDataDownloader  # Import the downloader class
+
+# Set the NLTK data directory
+nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")
+
+# Download NLTK data using the downloader class
+downloader = NLTKDataDownloader(download_dir=nltk_data_dir)
+downloader.download_data(["tokenizers/punkt", "corpora/stopwords"])
+
+# Set the NLTK data path to the local directory
 import nltk
+nltk.data.path.append(nltk_data_dir)
 
 # Load environment variables
 load_dotenv()
-
-# Set the NLTK data path to the local directory
-nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")
-nltk.data.path.append(nltk_data_dir)
-
-# Check if required NLTK data exists
-try:
-    nltk.data.find('tokenizers/punkt')
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    st.error("NLTK data not found. Please ensure the nltk_data directory is correctly set up.")
 
 # Streamlit UI
 st.title("Hybrid Search with Langchain and Pinecone")
