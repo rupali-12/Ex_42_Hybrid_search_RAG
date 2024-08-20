@@ -8,7 +8,7 @@ from pinecone_text.sparse import BM25Encoder
 import nltk
 
 # Download the Punkt tokenizer for NLTK
-nltk.download("punkt")
+nltk.download("punkt_tab")
 
 # Load environment variables
 load_dotenv()
