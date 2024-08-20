@@ -65,7 +65,7 @@ else:
 
     retriever.add_texts(sentences)
 
-    # User input for query
+    # # User input for query
     query = st.text_input("Enter your query:", "What city did I visit first?")
 
     if query:
@@ -74,3 +74,18 @@ else:
         st.write("Search Results:")
         st.write(results)
 
+# queries = [
+#     "What city did I visit in 2023?",
+#     "Who developed the theory of relativity?",
+#     "What is the highest mountain in the world?",
+#     "What year did humans first land on the moon?",
+#     "What is the capital of France?",
+#     "When did the COVID-19 pandemic begin?"
+# ]
+
+# Perform hybrid search for each query and print the results
+# for query in queries:
+#     results = retriever.invoke(query)
+#     st.write(f"Query: {query}")
+#     st.write("Search Results:")
+#     st.write(results)
