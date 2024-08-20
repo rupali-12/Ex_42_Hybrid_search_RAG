@@ -6,4 +6,4 @@
 
 # Deployed Link
 
-[DEPLOYED_LINK](https://ex42hybridsearchrag-rtpeco4g9bcwu63hztljpa.streamlit.app/)
+[DEPLOYED_LINK](https://ex42hybridsearchrag-kxhrvaypbyvnomafakd9sf.streamlit.app/)

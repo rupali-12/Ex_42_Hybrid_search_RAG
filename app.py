@@ -114,14 +114,14 @@
 
 
 # **************************************
-from nltk_data_downloader import NLTKDataDownloader  # Import the downloader class
+import os
+from dotenv import load_dotenv
 import streamlit as st
+from nltk_data_downloader import NLTKDataDownloader  # Ensure this import matches your file structure
 from pinecone import Pinecone, ServerlessSpec
 from langchain_community.retrievers import PineconeHybridSearchRetriever
 from langchain_huggingface import HuggingFaceEmbeddings
 from pinecone_text.sparse import BM25Encoder
-import os
-from dotenv import load_dotenv
 
 # Initialize NLTK data downloader
 nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")  # Path for nltk_data
