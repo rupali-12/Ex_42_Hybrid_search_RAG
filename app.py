@@ -43,6 +43,14 @@ else:
         "In 2023, I visited Paris",
         "In 2022, I visited New York",
         "In 2021, I visited New Orleans",
+         "Albert Einstein developed the theory of relativity.",
+    "The Great Wall of China is one of the wonders of the world.",
+    "Python is a popular programming language for data science.",
+    "Mount Everest is the highest mountain in the world.",
+    "The capital of France is Paris.",
+    "In 1969, humans first landed on the moon.",
+    "The Amazon Rainforest is the largest tropical rainforest on Earth.",
+    "The COVID-19 pandemic began in 2019."
     ]
 
     bm25_encoder.fit(sentences)
