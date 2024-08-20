@@ -187,7 +187,7 @@ else:
 
     retriever.add_texts(sentences)
 
-    # User input for query
+    # User input for quer
     query = st.text_input("Enter your query:", "What city did I visit first?")
 
     if query:
