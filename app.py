@@ -124,20 +124,16 @@ import nltk
 # Load environment variables
 load_dotenv()
 
-# Create a directory to store NLTK data if it doesn't exist
-nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")
-if not os.path.exists(nltk_data_dir):
-    os.makedirs(nltk_data_dir)
-
 # Set the NLTK data path to the local directory
+nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")
 nltk.data.path.append(nltk_data_dir)
 
-# Download the punkt tokenizer to the nltk_data directory if not already present
+# Check if required NLTK data exists
 try:
-    nltk.download('punkt', download_dir=nltk_data_dir)
-    nltk.download('stopwords', download_dir=nltk_data_dir)  # Added stopwords download
-except Exception as e:
-    st.error(f"Error downloading NLTK data: {e}")
+    nltk.data.find('tokenizers/punkt')
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    st.error("NLTK data not found. Please ensure the nltk_data directory is correctly set up.")
 
 # Streamlit UI
 st.title("Hybrid Search with Langchain and Pinecone")
@@ -203,20 +199,3 @@ else:
         results = retriever.invoke(query)
         st.write("Search Results:")
         st.write(results)
-
-# Optional: Uncomment to perform hybrid search for predefined queries
-# queries = [
-#     "What city did I visit in 2023?",
-#     "Who developed the theory of relativity?",
-#     "What is the highest mountain in the world?",
-#     "What year did humans first land on the moon?",
-#     "What is the capital of France?",
-#     "When did the COVID-19 pandemic begin?"
-# ]
-
-# Perform hybrid search for each query and print the results
-# for query in queries:
-#     results = retriever.invoke(query)
-#     st.write(f"Query: {query}")
-#     st.write("Search Results:")
-#     st.write(results)
