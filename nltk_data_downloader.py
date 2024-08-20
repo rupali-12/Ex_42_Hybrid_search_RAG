@@ -1,27 +1,27 @@
-import nltk
 import os
+import nltk
+import streamlit as st
 
 class NLTKDataDownloader:
-    def __init__(self, download_dir):
+    def __init__(self, download_dir="nltk_data"):
         self.download_dir = download_dir
-        self._create_download_dir()
+        self.ensure_directory()
 
-    def _create_download_dir(self):
-        """Create the download directory if it doesn't exist."""
+    def ensure_directory(self):
+        """Ensure that the NLTK data directory exists."""
         if not os.path.exists(self.download_dir):
             os.makedirs(self.download_dir)
 
     def download_data(self, resources):
-        """Download NLTK resources specified in the resources list."""
+        """Download the specified NLTK resources if they are not already downloaded."""
         for resource in resources:
             try:
-                nltk.data.find(resource)
-                print(f"'{resource}' already downloaded.")
-            except LookupError:
-                print(f"Downloading '{resource}'...")
                 nltk.download(resource, download_dir=self.download_dir)
+                st.success(f"Downloaded {resource} successfully.")
+            except Exception as e:
+                st.error(f"Error downloading {resource}: {e}")
 
-# Example usage
-if __name__ == "__main__":
-    downloader = NLTKDataDownloader(download_dir="nltk_data")
-    downloader.download_data(["tokenizers/punkt", "corpora/stopwords"])
+    def setup(self):
+        """Setup NLTK data path and download necessary resources."""
+        nltk.data.path.append(self.download_dir)
+        self.download_data(["punkt", "stopwords"])
