@@ -122,6 +122,9 @@ from pinecone import Pinecone, ServerlessSpec
 from langchain_community.retrievers import PineconeHybridSearchRetriever
 from langchain_huggingface import HuggingFaceEmbeddings
 from pinecone_text.sparse import BM25Encoder
+import nltk
+nltk.download('punkt')
+
 
 # Initialize NLTK data downloader
 nltk_data_dir = os.path.join(os.getcwd(), "nltk_data")  # Path for nltk_data
